@@ -1,0 +1,6 @@
+from collections import Counter
+class Solution:
+    def majorityElement(self, nums: List[int]) -> int:
+        # Counter.most_common() returns a list tuple with key and repitition such  as [(3, 2), (2, 1)].
+        return Counter(nums).most_common(1)[0][0]
+        
