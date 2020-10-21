@@ -1,0 +1,10 @@
+class Solution:
+    def isPalindrome(self, s: str) -> bool:
+        #casefold() is case insensitive and the isalnum() checks for all the special characters
+        refined = ''.join(e for e in s.casefold() if e.isalnum())
+        
+        # Checks the refined sentence from the end of the list 
+        if refined == refined[::-1]:
+            return True
+        else:
+            return False
