@@ -1,0 +1,10 @@
+class Solution:
+    def firstUniqChar(self, s: str) -> int:
+        dic1 = {}
+        for item in s : 
+            dic1[item] = dic1.get(item,0)+1
+        for i,alphabet in enumerate(s):
+            if dic1[alphabet] == 1 :
+                return i
+        return -1
+        
