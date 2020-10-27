@@ -1,0 +1,10 @@
+class Solution:
+    def findAnagrams(self, s: str, p: str) -> List[int]:
+        output=[]
+        n=len(p)
+        for item in range(len(s)):
+            #Comparison of input string with sorted substrings of s
+            if p == ''.join(sorted(s[item:item+n])):
+                output.append(item)
+            
+        return output
