@@ -1,0 +1,22 @@
+class Solution:
+    def sortColors(self, nums: List[int]) -> None:
+        """
+        Do not return anything, modify nums in-place instead.
+        """
+        # Works on the Dutch Flag Problem, white is chosen to be the middle element and is not moved i.e skipped when white is encountered . On the other hand all the red 
+        # colours are brought to the left while the blue colours are pushed to the right
+        red, white, blue = 0, 0, len(nums)-1
+    
+        while white <= blue:
+            # All the 0's encountered are pushed to the left if encountered
+            if nums[white] == 0:
+                nums[red], nums[white] = nums[white], nums[red]
+                white += 1
+                red += 1
+            # 1's are skipped because they are assumed to be in place
+            elif nums[white] == 1:
+                white += 1
+            # 2's are pushed to the right of the list
+            else:
+                nums[white], nums[blue] = nums[blue], nums[white]
+                blue -= 1
