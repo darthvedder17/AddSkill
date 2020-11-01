@@ -1,0 +1,38 @@
+class Solution:
+    def possibleBipartition(self, N: int, dislikes: List[List[int]]) -> bool:
+        ## Simlar to Leetcode : 785. Is Graph Bipartite? ##
+        def dfs(node, color, colorGraph):
+            
+            # if color to this node is assigned already and which is not how we wanted to color it then we return False
+            if( node in colorGraph and colorGraph[node] == color ^ 1 ):
+                return False
+            
+            # if node is visited already, but assigned correct color, return True
+            if( node in colorGraph ):
+                return True
+            
+            # assign node with color (say 0)
+            colorGraph[ node ] = color
+            
+            for nei in dislike_graph[ node ]:
+                # send opposite color to its neibhors (i.e 0^1 = 1)
+                if not dfs( nei, color ^ 1, colorGraph ):
+                    return False
+            
+            # if its neighbors didnot return any false, its all good. so return True
+            return True
+                
+        
+        if(not dislikes):   return True
+        dislike_graph = collections.defaultdict(list)
+        for u, v in dislikes:
+            dislike_graph[ u ].append( v )
+            dislike_graph[ v ].append( u )
+        
+        color = 0
+        colorGraph = {}
+        for i in range(1, N+1):
+            if i not in colorGraph:
+                if not dfs( i, color, colorGraph ):
+                    return False
+        return True
