@@ -1,0 +1,17 @@
+class Solution:
+    def insertionSortList(self, head: ListNode) -> ListNode:
+        node = ListNode(0)
+        node.next = head
+        
+        while head and head.next:
+            if head.val<=head.next.val:
+                head = head.next
+            else:
+                node1 = node         # start from the start to find the position to insert the node
+                nodetoinsert = head.next      # this is the node to insert
+                while node1.next.val<nodetoinsert.val:    #start tracking where to insert the node
+                    node1 = node1.next
+                head.next = nodetoinsert.next        #kind of delete the node from the list as we will insert it in the middle of list on its position
+                node1.next, nodetoinsert.next = nodetoinsert, node1.next    # insert the node and keep the rest of the order as it was
+                
+        return node.next
