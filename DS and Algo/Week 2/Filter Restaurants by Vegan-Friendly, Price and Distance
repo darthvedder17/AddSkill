@@ -1,0 +1,21 @@
+class Solution(object):
+    def filterRestaurants(self, restaurants, veganFriendly, maxPrice, maxDistance):
+       
+        
+        res = []
+        
+        for r in restaurants:
+            vegan = r[2]
+            price = r[3]
+            distance = r[4]
+            
+            if (vegan >= veganFriendly) and (price <= maxPrice) and (distance <= maxDistance):
+                res.append(r)
+        
+        def sorting_function(r):
+            rating = r[1]
+            res_id = r[0]
+            
+            return (rating, res_id)
+        
+        return [i[0] for i in sorted(res, key=sorting_function, reverse=True)]
