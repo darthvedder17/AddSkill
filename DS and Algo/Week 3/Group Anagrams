@@ -1,3 +1,5 @@
+
+# Naive Approach, fails for larger inputs
 class Solution:
     def groupAnagrams(self, strs: List[str]) -> List[List[str]]:
         groups = dict()
@@ -8,3 +10,50 @@ class Solution:
             else:
                 groups[key].append(s)
         return groups.values()  
+
+----------------------------------------------------------------------------------------------------------------------1
+Sliding Window Algorithm applied here : 
+dictP = {a:1,b:1,c:1}
+dictS = {a:1,b:1,c:1}
+
+Two elements considered : 
+i = 0 
+j = len(p) // i.e 3 in this case
+With every iteration dictp and dictS are compared and if equal i index is stored in the output list.
+Otherwise move forward decrementing and popping i and incrementing j.
+Solution given below
+ __________
+|          |
+| Window   |     
+|__________|..................................
+i          j                                  n
+
+-------------------------------------------------------------------------------------------------------------------------
+from collections import Counter
+class Solution:
+    def findAnagrams(self, s: str, p: str) -> List[int]:
+        output = []
+
+        #Counter for the input string till the substring length         
+        dictS = Counter(s[:len(p)])
+        #Counter for the given substring i.e 'abc' 		
+        dictP = Counter(p)
+
+        i= 0
+        j=len(p)
+        # 		Start from the second windows onwards
+        while j<=len(s):
+        # 			Check for dictionary equality
+            if dictS == dictP :
+                output.append(i)
+        # 			decrement previous window frequency by 1 and pop it
+            dictS[s[i]]-=1
+        # 			popped element
+            if dictS[s[i]]<=0:
+                dictS.pop(s[i])
+        # 			increment the frequency of the next element in the window
+            if j<len(s):
+                dictS[s[j]]+=1
+            i+=1
+            j+=1
+        return output
