@@ -1,0 +1,23 @@
+class Solution:
+       def subdomainVisits(self, cpdomains):
+
+            """
+            :type cpdomains: List[str]
+            :rtype: List[str]
+            """
+            domain = {}
+
+            for i in cpdomains:
+                count = i.split(' ')            
+                subdomain = count[1].split('.') 
+                for j in range(len(subdomain)):
+                    web_name = '.'.join(subdomain[j:])    
+                    if web_name not in domain:
+                        domain[web_name] = int(count[0])
+                    else:
+                        domain[web_name] += int(count[0])
+
+            ans = []
+            for name,count in domain.items():
+                ans.append("{} {}".format(str(count),name))
+            return ans
