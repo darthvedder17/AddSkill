@@ -1,0 +1,11 @@
+class Solution:
+    def leastBricks(self, wall: List[List[int]]) -> int:
+        count=collections.defaultdict(int)
+        for line in wall:
+            sum=0
+            for brick in line[:-1]:
+                sum+=brick
+                count[sum]+=1
+        if not len(count):
+            return len(wall)
+        return len(wall)-max(count.values())
