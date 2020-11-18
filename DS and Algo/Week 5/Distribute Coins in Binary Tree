@@ -1,0 +1,14 @@
+class Solution:
+    def distributeCoins(self, r):
+        ops = 0
+        
+        def _dist(n):
+            nonlocal ops
+            l = _dist(n.left) if n.left else 0
+            r = _dist(n.right) if n.right else 0
+            n.val += (l + r)
+            ops += abs(n.val - 1)
+            return n.val - 1
+        
+        _dist(r)
+        return ops
