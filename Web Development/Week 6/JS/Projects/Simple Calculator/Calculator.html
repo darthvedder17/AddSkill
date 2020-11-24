@@ -89,10 +89,15 @@
         </tr>
         <tr>
             
-            <td><input type="button" id="operators" onclick="showValueOrOperation('c')" value=""/></td>
-            <td><input type="button" id="operators" onclick="backSpace()" value="del"/></td>
-            <td><input type="button" id="operators" onclick="trigno" value="sin"/></td>
-            <td><input type="button" id="operators" onclick="showValueOrOperation(')')" value=")"/></td>
+            <!-- <td><input type="button" id="operators" onclick="showValueOrOperation('c')" value=""/></td>
+            <td><input type="button" id="operators" onclick="backSpace()" value="del"/></td> -->
+            <td><input type="button" id="operators" onclick="trigno('sin')" value="sin"/></td>
+            <td><input type="button" id="operators" onclick="trigno('cos')" value="cos"/></td>
+            <td><input type="button" id="operators" onclick="trigno('tan')" value="tan"/></td>
+            <td><input type="button" id="operators" onclick="showValueOrOperation(`${Math.PI}`)" value="pi"/></td>
+
+            <!-- <td><input type="button" id="operators" onclick="trigno('sin')" value="sin"/></td> -->
+            <!-- <td><input type="button" id="operators" onclick="showValueOrOperation(')')" value=")"/></td> -->
 
 
         </tr>
@@ -106,9 +111,11 @@
 
 
     function showValueOrOperation( x ) {
-            outputVal.value += x;
             
+            outputVal.value += x;
+
             if ( x == 'c' ) { outputVal.value=''; }
+
             
             if( outputVal.value.match( / [ ^ 0 - 9 + - = * / . ] / ) ) {
                 
@@ -121,11 +128,18 @@
     function answer() {
     
         x = outputVal.value;
-        
+        splitString = x.split('/')
+        // console.log(splitString);
+//  Check for division by 0
+        if(splitString[1]==0){
+            str= 'Cannot divide by 0'
+            outputVal.value = str;
+        }  
+        else{
         x = eval( x );
         
         outputVal.value = x;
-
+        }
     } 
 
     function backSpace() {
@@ -140,22 +154,36 @@
 
     } 
 
-    function square( y ) {
-    
-        x = outputVal.value;
-        
-        x = Math.power( x, y );
-        
-        outputVal.value = x;
 
-    } 
+    function trigno(x){
+        
+            switch(x){
+                case 'sin':
+                
+                x = outputVal.value;
+                x= Math.sin(x);
+                outputVal.value=x;
+                break;
+                case 'cos' :   
+                x = outputVal.value;
+
+                x= Math.cos(x);
+                outputVal.value =x;
+                break;
+
+                case 'tan' :   
+                x = outputVal.value;
+
+                x= Math.tan(x);
+                outputVal.value =x 
+                break;
             
-    function trigno(){
-        function sin(){
-            x = outputVal.value;
-            x= Math.sin(x);
-            outputVal.value=x;
-        }
+                
+            
+            }
+    
+    
+    
     }
             
             
