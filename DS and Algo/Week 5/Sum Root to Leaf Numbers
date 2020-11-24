@@ -1,0 +1,20 @@
+class Solution:
+    
+
+    def sumNumbers(self, node: TreeNode, tree_num = 0) -> int:
+
+        if not node:
+            # empty tree or empty node
+            return 0
+        
+        else:
+            # update tree_num with current node
+            tree_num = 10 * tree_num + node.val
+
+            if not node.left and not node.right:
+                # leaf is reached, return tree_num
+                return tree_num
+
+            else:
+                # DFS down to next level
+                return self.sumNumbers( node.left, tree_num) + self.sumNumbers( node.right, tree_num) 
