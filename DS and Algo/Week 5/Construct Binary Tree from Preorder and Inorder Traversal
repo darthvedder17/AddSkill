@@ -1,0 +1,16 @@
+# Definition for a binary tree node.
+# class TreeNode:
+#     def __init__(self, val=0, left=None, right=None):
+#         self.val = val
+#         self.left = left
+#         self.right = right
+class Solution:
+        def buildTree(self, preorder, inorder):
+            def build( inLo, inHi, preLo, preHi ):
+                if inLo > inHi or preLo > preHi: return 
+                root = TreeNode( preorder[preLo] )
+                pos = inorder.index( root.val )
+                root.left = build( inLo, pos-1, preLo+1, preLo+pos - inLo)
+                root.right = build( pos+1, inHi, preLo+pos-inLo+1, preHi)
+                return root
+            return build( 0, len( inorder )-1, 0, len( preorder ) -1)     
