@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>Cool Veggies</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  <script>
+
+  </script>
+  <style>
+    
+    .navbar {
+      margin-bottom: 50px;
+      border-radius: 0;
+    }
+
+    
+    .jumbotron {
+      margin-bottom: 0;
+    }
+
+    
+    footer {
+      background-color: #f2f2f2;
+      padding: 25px;
+    }
+      
+    .wronginput:focus { 
+        outline: none !important;
+        border-color: lightcoral;
+        box-shadow: 0 0 4px lightcoral;
+    }
+    
+    .hovercolor {
+          background-color: lightblue;
+    }
+      
+    .dropbtn {
+          padding: 16px;
+          font-size: 15px;
+          border: none;
+          cursor: pointer;
+          margin-left:40px;
+          background-color: #222;
+          color: #999;
+    }
+
+    .dropbtn:hover{
+      color: white;
+    }
+
+    .dropdown {
+      position: relative;
+      display: inline-block;
+    }
+
+    .dropdown-content {
+      display: none;
+      position: absolute;
+      background-color: #f1f1f1;
+      left:40px;
+      width:150px;
+      box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+      z-index: 1;
+    }
+
+    .dropdown-content p{
+      padding: 12px;
+      text-decoration: none;
+      display: block;
+    }
+
+    .dropdown-content p:hover {
+        background-color: #ddd
+    }
+
+    .show {
+        display:block;
+    } 
+
+    ul {
+    list-style-type: none;
+
+    font-weight: 200;
+}
+
+ #list{
+
+font-size: 30px;
+font-weight: 200;
+
+ }
+  </style>
+</head>
+
+         
+        <nav class="navbar navbar-inverse">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="#"></a>
+      </div>
+      <div class="collapse navbar-collapse" id="myNavbar">
+        <ul class="nav navbar-nav">
+          <li class="active"><a href="#"> <strong> Best Veggies </strong> </a></li>
+          <li><a href="#">Products</a></li>
+          <li><a href="#">Deals</a></li>
+          <li><a href="#">Stores</a></li>
+          <li><a href="#">Contact</a></li>
+        </ul>
+        <ul class="nav navbar-nav navbar-right">
+          <li><a href="#"><span class="glyphicon glyphicon-user"></span> Your Account</a></li>
+          <li><a href="Cart.html" target="_blank"><span class="glyphicon glyphicon-shopping-cart"></span> Cart</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+
+  <center>
+		<h1>Cart Item</h1>
+		<div class="jumbotron container">
+			<ul id="list"></ul>
+		</div>
+	</center>  
+
+        <script>
+         
+            
+            for (var i = 0; i < localStorage.length; i++){
+                // console.log(localStorage.key(i));
+                //
+                // var td1txt=document.createTextNode(localStorage.key(i).slice(0,localStorage.key(i).length));
+                // var td2=document.createElement("td");
+                // var td2txt=document.createTextNode(localStorage.getItem(localStorage.key(i)));
+                // var picture = localStorage.getItem('image');
+                // var image = document.createElement('img');
+                // image.src = picture;
+                // document.body.appendChild(image);
+
+                var ul = document.getElementById("list");
+                var liItem = document.createElement("li");
+                // liItem.setAttribute("id", "ItemName");
+                // document.getElementById("ItemName").style.fontWeight = 200;
+
+
+                // var liValue = document.createElement("li");
+                // liValue.appendChild(document.createTextNode(localStorage.getItem(localStorage.key(i))));
+                liItem.appendChild(document.createTextNode(localStorage.key(i).slice(0,localStorage.key(i).length)));
+                liItem.append(document.createTextNode(" : "))
+                liItem.append(document.createTextNode(localStorage.getItem(localStorage.key(i))));
+                ul.appendChild(liItem);
+                // ul.appendChild(liValue);
+            }
+            
+        </script>        
+    </body>    
+</html>
