@@ -8,7 +8,8 @@ Fetches the ```Zen API``` for a random quote when run from the Console.
 
 RUNNING FROM CONSOLE : 
 Open the package.json file and include 
-```"bin":{
+```
+"bin":{
 "qod": "./index.js"
 
 }```
