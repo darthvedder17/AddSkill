@@ -10,16 +10,16 @@ This Node app on execution performs the following functions :
    
    
    Document Structure 
-   
+   ```
    
    [development ? production] 
    
    
    [development--]
               [development/src ------- development/dest(--stream true ? false)]
-                    [|                       |]
-                    [|                       |]
-                 [11/11/11.txt               11/11/11.txt]
+                    |                       |
+                    |                       |
+                 11/11/11.txt               11/11/11.txt
                                               
-                 [Sample Text]              [Sample Text]      
+                 Sample Text              Sample Text```      
                 
