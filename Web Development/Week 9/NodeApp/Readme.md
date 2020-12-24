@@ -1,6 +1,6 @@
 This Node app on execution performs the following functions : 
 
-1.Create a folder development and production according to the NODE_ENV variable. Default : development
+1. Create a folder development and production according to the NODE_ENV variable. Default : development
 2. Creates a subfolder development/src and development/dest
 3. The src subfolder further contains a file according to date provided provided by Moment.js
 4. The dest subfolder has a --stream value which follows through file build according to its value
